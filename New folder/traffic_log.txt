@@ -1,0 +1,48 @@
+[21:54:13] [SYSTEM] 🎬 Bắt đầu mô phỏng hệ thống đèn giao thông thông minh
+[21:54:13] [CYCLE] 🚦 Bắt đầu chu kỳ 1
+[21:54:13] [INFO] AI Scan: L1=0, L2=0, L3=0, L4=0, Tổng=0 (RẤT ÍT), Ưu tiên=none
+[21:54:13] [INFO] Điều chỉnh đèn: Đỏ=8s, Xanh=8s, Vàng=3s
+[21:54:13] [INFO] Đèn chuyển sang RED trong 8 giây
+[21:54:22] [INFO] Kết thúc RED chu kỳ 1
+[21:54:22] [INFO] Đèn chuyển sang GREEN trong 8 giây
+[21:54:30] [INFO] Kết thúc GREEN chu kỳ 1
+[21:54:30] [INFO] Đèn chuyển sang YELLOW trong 3 giây
+[21:54:33] [INFO] Kết thúc YELLOW chu kỳ 1
+[21:54:35] [CYCLE] 🚦 Bắt đầu chu kỳ 2
+[21:54:35] [INFO] AI Scan: L1=0, L2=1, L3=1, L4=1, Tổng=3 (RẤT ÍT), Ưu tiên=emergency
+[21:54:35] [PRIORITY] Chế độ ưu tiên: Đỏ=15s, Xanh=17s
+[21:54:35] [PRIORITY] 🚨 Kích hoạt ưu tiên: EMERGENCY trong 19 giây
+[21:54:35] [INFO] Đèn chuyển sang RED trong 15 giây
+[21:54:50] [INFO] Kết thúc RED chu kỳ 2
+[21:54:50] [INFO] Đèn chuyển sang GREEN trong 17 giây
+[21:54:54] [PRIORITY] Kết thúc chế độ ưu tiên
+[21:55:07] [INFO] Kết thúc GREEN chu kỳ 2
+[21:55:07] [INFO] Đèn chuyển sang YELLOW trong 5 giây
+[21:55:12] [INFO] Kết thúc YELLOW chu kỳ 2
+[21:55:14] [CYCLE] 🚦 Bắt đầu chu kỳ 3
+[21:55:14] [INFO] AI Scan: L1=4, L2=1, L3=3, L4=3, Tổng=11 (TRUNG BÌNH), Ưu tiên=fire
+[21:55:14] [PRIORITY] Chế độ ưu tiên: Đỏ=15s, Xanh=17s
+[21:55:14] [PRIORITY] 🚨 Kích hoạt ưu tiên: FIRE trong 19 giây
+[21:55:14] [INFO] Đèn chuyển sang RED trong 15 giây
+[21:55:29] [INFO] Kết thúc RED chu kỳ 3
+[21:55:29] [INFO] Đèn chuyển sang GREEN trong 17 giây
+[21:55:33] [PRIORITY] Kết thúc chế độ ưu tiên
+[21:55:46] [INFO] Kết thúc GREEN chu kỳ 3
+[21:55:46] [INFO] Đèn chuyển sang YELLOW trong 5 giây
+[21:55:51] [INFO] Kết thúc YELLOW chu kỳ 3
+[21:55:53] [CYCLE] 🚦 Bắt đầu chu kỳ 4
+[21:55:53] [INFO] AI Scan: L1=6, L2=3, L3=3, L4=5, Tổng=17 (NHIỀU), Ưu tiên=none
+[21:55:53] [INFO] Điều chỉnh đèn: Đỏ=13s, Xanh=15s, Vàng=4s
+[21:55:53] [INFO] Đèn chuyển sang RED trong 13 giây
+[21:56:06] [INFO] Kết thúc RED chu kỳ 4
+[21:56:06] [INFO] Đèn chuyển sang GREEN trong 15 giây
+[21:56:21] [INFO] Kết thúc GREEN chu kỳ 4
+[21:56:21] [INFO] Đèn chuyển sang YELLOW trong 4 giây
+[21:56:25] [INFO] Kết thúc YELLOW chu kỳ 4
+[21:56:27] [CYCLE] 🚦 Bắt đầu chu kỳ 5
+[21:56:27] [INFO] AI Scan: L1=6, L2=4, L3=3, L4=7, Tổng=20 (RẤT NHIỀU), Ưu tiên=fire
+[21:56:27] [PRIORITY] Chế độ ưu tiên: Đỏ=15s, Xanh=17s
+[21:56:27] [PRIORITY] 🚨 Kích hoạt ưu tiên: FIRE trong 19 giây
+[21:56:27] [INFO] Đèn chuyển sang RED trong 15 giây
+[21:56:42] [INFO] Kết thúc RED chu kỳ 5
+[21:56:42] [INFO] Đèn chuyển sang GREEN trong 17 giây

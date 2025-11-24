@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Tuyển sinh Đại học</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info span {
+            margin-right: 15px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-logout {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-logout:hover {
+            background-color: #c0392b;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .card ul {
+            list-style-type: none;
+        }
+        
+        .card li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card li:last-child {
+            border-bottom: none;
+        }
+        
+        .card li i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .card-actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .ministry-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid var(--light-color);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .user-info {
+                margin-top: 15px;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-university logo-icon"></i>
+                    <h1>Hệ thống Quản lý Tuyển sinh Đại học</h1>
+                </div>
+                <div class="user-info">
+                    <span>Xin chào, Nguyễn Văn A</span>
+                    <button class="btn btn-logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard">
+            <div class="card">
+                <h2><i class="fas fa-user-plus"></i> Đăng ký tài khoản</h2>
+                <ul>
+                    <li><i class="fas fa-print"></i> In giấy báo nhập học / Dự thi</li>
+                    <li><i class="fas fa-sign-in-alt"></i> Đăng nhập</li>
+                    <li><i class="fas fa-money-bill-wave"></i> Thanh toán</li>
+                    <li><i class="fas fa-list-alt"></i> Nguyện vọng tuyển sinh</li>
+                    <li><i class="fas fa-search"></i> Tra cứu kết quả</li>
+                    <li><i class="fas fa-chart-bar"></i> Xem báo cáo</li>
+                    <li><i class="fas fa-tachometer-alt"></i> Cấp chỉ tiêu tuyển sinh</li>
+                    <li><i class="fas fa-database"></i> Kiểm tra dữ liệu</li>
+                    <li><i class="fas fa-check-circle"></i> Xác minh dữ liệu</li>
+                </ul>
+                <div class="card-actions">
+                    <button class="btn btn-primary">Truy cập</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-file-alt"></i> Tiếp nhận / Duyệt hồ sơ</h2>
+                <ul>
+                    <li><i class="fas fa-search"></i> Tra cứu thông tin sinh viên</li>
+                    <li><i class="fas fa-edit"></i> Cập nhật kết quả</li>
+                    <li><i class="fas fa-calendar-alt"></i> Quản lý kỳ thi / đợt tuyển sinh</li>
+                    <li><i class="fas fa-bullhorn"></i> Quản lý thông báo chung</li>
+                    <li><i class="fas fa-user-shield"></i> Phân quyền</li>
+                    <li><i class="fas fa-hdd"></i> Sao lưu và khôi phục dữ liệu</li>
+                </ul>
+                <div class="card-actions">
+                    <button class="btn btn-primary">Truy cập</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ministry-section">
+            <h2><i class="fas fa-landmark"></i> Bộ GD-ĐT</h2>
+            <p>Hệ thống kết nối và báo cáo với Bộ Giáo dục và Đào tạo</p>
+            <button class="btn btn-primary" style="margin-top: 10px;">Kết nối</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Hệ thống Quản lý Tuyển sinh Đại học &copy; 2023. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Xử lý sự kiện cho các nút
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                const cardTitle = this.closest('.card').querySelector('h2').textContent;
+                alert(`Bạn đã chọn: ${cardTitle}`);
+            });
+        });
+        
+        // Xử lý sự kiện đăng xuất
+        document.querySelector('.btn-logout').addEventListener('click', function() {
+            if(confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                alert('Đã đăng xuất thành công!');
+                // Trong thực tế, ở đây sẽ chuyển hướng đến trang đăng nhập
+            }
+        });
+        
+        // Xử lý sự kiện cho các mục chức năng
+        document.querySelectorAll('.card li').forEach(item => {
+            item.addEventListener('click', function() {
+                const functionName = this.textContent.trim();
+                alert(`Bạn đã chọn chức năng: ${functionName}`);
+            });
+        });
+    </script>
+</body>
+</html>

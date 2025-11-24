@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚦 Hệ Thống Đèn Giao Thông Thông Minh AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eee;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+        
+        .simulation-area {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .simulation-area {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .traffic-canvas-container {
+            background: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        #trafficCanvas {
+            width: 100%;
+            height: 500px;
+            background: #34495e;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .control-panel {
+            background: #ecf0f1;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 5px 0;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .light-indicator {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .light-state {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+        
+        .state-red { color: #e74c3c; }
+.state-green { color: #27ae60; }
+        .state-yellow { color: #f39c12; }
+        
+        .timer {
+            font-size: 3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        
+        .priority-alert {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .log-container {
+            background: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+        }
+        
+        #log {
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+            background: #1a252f;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 3px 0;
+            border-bottom: 1px solid #34495e;
+        }
+        
+        .log-time {
+            color: #3498db;
+        }
+        
+        .log-priority {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .lane-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #bdc3c7;
+        }
+        
+        .road-markings {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .road-line {
+            position: absolute;
+            background: white;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚦 Hệ Thống Đèn Giao Thông Thông Minh AI</h1>
+            <div class="subtitle">Edge Computing & Artificial Intelligence trong quản lý giao thông đô thị</div>
+        </header>
+        
+        <div class="simulation-area">
+            <div class="traffic-canvas-container">
+                <canvas id="trafficCanvas" width="800" height="500"></canvas>
+            </div>
+            
+            <div class="control-panel">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Chu Kỳ Hiện Tại</div>
+                        <div class="stat-value" id="cycle">1</div>
+                        <div class="stat-label">/<span id="maxCycle">10</span></div>
+                    </div>
+                    
+                    <div class="stat-card">
+<div class="stat-label">Xe Đã Qua</div>
+                        <div class="stat-value" id="vehiclesPassed">0</div>
+                        <div class="stat-label">Phương Tiện</div>
+                    </div>
+                </div>
+                
+                <div class="light-indicator">
+                    <div class="stat-label">Trạng Thái Đèn</div>
+                    <div class="light-state" id="stateDisplay">ĐỎ</div>
+                    <div class="timer" id="timer">0.0s</div>
+                    <div class="stat-label">Thời Gian Còn Lại</div>
+                </div>
+                
+                <div id="priorityDisplay" style="display: none;">
+                    <div class="priority-alert">
+                        <div style="font-size: 1.5em;">🚨 ƯU TIÊN KHẨN CẤP</div>
+                        <div id="priorityType" style="font-size: 1.2em; margin-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="log-container">
+            <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 10px;">
+                <h3 style="color: white;">📋 Nhật Ký Hệ Thống</h3>
+                <button onclick="clearLog()" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Xóa Log</button>
+            </div>
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('trafficCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Kích thước thực tế của canvas
+        const canvasWidth = 800;
+        const canvasHeight = 500;
+        
+        // Thiết lập kích thước hiển thị
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        
+        // Biến toàn cục
+        let simulationData = {};
+        
+        // Vẽ đường và làn xe
+        function drawRoad() {
+            // Mặt đường
+            ctx.fillStyle = '#34495e';
+            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+            
+            // Vẽ vạch kẻ đường giữa (loại bỏ vạch trên cùng)
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([10, 15]);
+            
+            // Chỉ vẽ 2 vạch phân cách giữa các làn (thay vì 3)
+            for (let i = 1; i <= 2; i++) {
+                const y = (canvasHeight / 3) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvasWidth, y);
+                ctx.stroke();
+            }
+            
+            ctx.setLineDash([]);
+            
+            // Vẽ vạch dừng
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(350, 0);
+            ctx.lineTo(350, canvasHeight);
+            ctx.stroke();
+// Vẽ biển báo dừng
+            ctx.fillStyle = 'red';
+            ctx.font = '12px Arial';
+            ctx.fillText('VẠCH DỪNG', 360, canvasHeight / 2);
+        }
+        
+        // Vẽ đèn giao thông
+        function drawTrafficLight(state) {
+            const lightX = 700;
+            const lightY = 50;
+            const lightWidth = 80;
+            const lightHeight = 200;
+            
+            // Thân đèn
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(lightX, lightY, lightWidth, lightHeight);
+            ctx.fillStyle = '#34495e';
+            ctx.fillRect(lightX - 10, lightY + lightHeight, 100, 20);
+            
+            // Đèn
+            const lights = [
+                { color: '#e74c3c', state: 'red', y: lightY + 20 },
+                { color: '#f39c12', state: 'yellow', y: lightY + 80 },
+                { color: '#27ae60', state: 'green', y: lightY + 140 }
+            ];
+            
+            lights.forEach(light => {
+                ctx.beginPath();
+                ctx.arc(lightX + lightWidth/2, light.y, 25, 0, Math.PI * 2);
+                ctx.fillStyle = light.state === state ? light.color : '#7f8c8d';
+                ctx.fill();
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+        }
+        
+        // Vẽ xe
+        function drawCars(cars) {
+            cars.forEach(car => {
+                const x = car.position;
+                const laneHeight = canvasHeight / 4;
+                const y = 50 + (car.lane * laneHeight);
+                
+                // Vẽ xe bằng emoji
+                ctx.font = '30px Arial';
+                ctx.fillText(car.emoji, x, y);
+                
+                // Hiển thị thời gian chờ nếu xe đang dừng
+                if (car.waiting_time > 30) {
+                    ctx.fillStyle = 'red';
+                    ctx.font = '12px Arial';
+                    ctx.fillText(`${car.waiting_time}s`, x, y - 10);
+                }
+            });
+        }
+        
+        // Cập nhật giao diện
+        function updateDisplay(data) {
+            document.getElementById('cycle').textContent = data.current_cycle;
+            document.getElementById('maxCycle').textContent = data.max_cycles;
+            document.getElementById('vehiclesPassed').textContent = data.total_vehicles_passed || 0;
+            
+            // Cập nhật trạng thái đèn
+            const stateDisplay = document.getElementById('stateDisplay');
+            stateDisplay.textContent = data.light_state.toUpperCase();
+            stateDisplay.className = 'light-state state-' + data.light_state;
+            
+            // Cập nhật timer
+            document.getElementById('timer').textContent = data.remaining_time.toFixed(1) + 's';
+            
+            // Cập nhật ưu tiên
+            const priorityDisplay = document.getElementById('priorityDisplay');
+if (data.priority_active) {
+                priorityDisplay.style.display = 'block';
+                document.getElementById('priorityType').textContent = 
+                    data.priority_type.toUpperCase() + ' ƯU TIÊN';
+            } else {
+                priorityDisplay.style.display = 'none';
+            }
+            
+            // Cập nhật log
+            const logElement = document.getElementById('log');
+            logElement.innerHTML = data.log.map(entry => 
+                `<div class="log-entry"><span class="log-time">${entry.substring(1, 9)}</span> ${entry.substring(12)}</div>`
+            ).join('');
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        // Vẽ toàn bộ cảnh
+        function drawScene(data) {
+            // Xóa canvas
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            
+            // Vẽ các thành phần
+            drawRoad();
+            drawTrafficLight(data.light_state);
+            drawCars(data.cars);
+        }
+        
+        // Lấy dữ liệu từ server
+        async function fetchData() {
+            try {
+                const response = await fetch('traffic_data.json?t=' + new Date().getTime());
+                simulationData = await response.json();
+                updateDisplay(simulationData);
+                drawScene(simulationData);
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu:', error);
+            }
+        }
+        
+        // Xóa log
+        function clearLog() {
+            const logElement = document.getElementById('log');
+            logElement.innerHTML = '';
+        }
+        
+        // Bắt đầu cập nhật
+        setInterval(fetchData, 500);
+        fetchData();
+    </script>
+</body>
+</html>

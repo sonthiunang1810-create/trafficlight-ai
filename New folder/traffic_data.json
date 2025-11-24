@@ -1,0 +1,191 @@
+{
+  "light_state": "green",
+  "cars": [
+    {
+      "lane": 3,
+      "type": "emergency",
+      "position": -35,
+      "emoji": "🚑",
+      "waiting_time": 0
+    },
+    {
+      "lane": 2,
+      "type": "emergency",
+      "position": 139,
+      "emoji": "🚑",
+      "waiting_time": 0
+    },
+    {
+      "lane": 1,
+      "type": "normal",
+      "position": -45.200000000000045,
+      "emoji": "🚗",
+      "waiting_time": 30
+    },
+    {
+      "lane": 2,
+      "type": "truck",
+      "position": 585.0,
+      "emoji": "🚚",
+      "waiting_time": 108
+    },
+    {
+      "lane": 2,
+      "type": "emergency",
+      "position": 364,
+      "emoji": "🚑",
+      "waiting_time": 0
+    },
+    {
+      "lane": 3,
+      "type": "bus",
+      "position": 598.0,
+      "emoji": "🚌",
+      "waiting_time": 100
+    },
+    {
+      "lane": 0,
+      "type": "fire",
+      "position": 166,
+      "emoji": "🚒",
+      "waiting_time": 0
+    },
+    {
+      "lane": 0,
+      "type": "truck",
+      "position": 601.0,
+      "emoji": "🚚",
+      "waiting_time": 86
+    },
+    {
+      "lane": 0,
+      "type": "bus",
+      "position": 564.0,
+      "emoji": "🚌",
+      "waiting_time": 86
+    },
+    {
+      "lane": 0,
+      "type": "normal",
+      "position": -81,
+      "emoji": "🚗",
+      "waiting_time": 0
+    },
+    {
+      "lane": 3,
+      "type": "normal",
+      "position": 846.1999999999991,
+      "emoji": "🚗",
+      "waiting_time": 86
+    },
+    {
+      "lane": 1,
+      "type": "bus",
+      "position": 442.0,
+      "emoji": "🚌",
+      "waiting_time": 82
+    },
+    {
+      "lane": 0,
+      "type": "fire",
+      "position": 246,
+      "emoji": "🚒",
+      "waiting_time": 0
+    },
+    {
+      "lane": 1,
+      "type": "normal",
+      "position": 696.7999999999995,
+      "emoji": "🚗",
+      "waiting_time": 66
+    },
+    {
+      "lane": 0,
+      "type": "bus",
+      "position": 387.0,
+      "emoji": "🚌",
+      "waiting_time": 62
+    },
+    {
+      "lane": 3,
+      "type": "normal",
+      "position": 512.7999999999995,
+      "emoji": "🚗",
+      "waiting_time": 56
+    },
+    {
+      "lane": 3,
+      "type": "normal",
+      "position": 373.8000000000002,
+      "emoji": "🚗",
+      "waiting_time": 56
+    },
+    {
+      "lane": 3,
+      "type": "bus",
+      "position": 121.0,
+      "emoji": "🚌",
+      "waiting_time": 44
+    },
+    {
+      "lane": 3,
+      "type": "bus",
+      "position": 119.0,
+      "emoji": "🚌",
+      "waiting_time": 30
+    },
+    {
+      "lane": 1,
+      "type": "fire",
+      "position": 769.0,
+      "emoji": "🚒",
+      "waiting_time": 0
+    },
+    {
+      "lane": 2,
+      "type": "truck",
+      "position": -54,
+      "emoji": "🚚",
+      "waiting_time": 26
+    },
+    {
+      "lane": 3,
+      "type": "fire",
+      "position": 526,
+      "emoji": "🚒",
+      "waiting_time": 0
+    },
+    {
+      "lane": 0,
+      "type": "normal",
+      "position": 25,
+      "emoji": "🚗",
+      "waiting_time": 18
+    },
+    {
+      "lane": 0,
+      "type": "bus",
+      "position": -28,
+      "emoji": "🚌",
+      "waiting_time": 0
+    }
+  ],
+  "current_cycle": 5,
+  "max_cycles": 10,
+  "remaining_time": 13.415790796279907,
+  "priority_type": "fire",
+  "priority_active": true,
+  "total_vehicles_passed": 8,
+  "log": [
+    "[21:56:21] [INFO] Kết thúc GREEN chu kỳ 4",
+    "[21:56:21] [INFO] Đèn chuyển sang YELLOW trong 4 giây",
+    "[21:56:25] [INFO] Kết thúc YELLOW chu kỳ 4",
+    "[21:56:27] [CYCLE] 🚦 Bắt đầu chu kỳ 5",
+    "[21:56:27] [INFO] AI Scan: L1=6, L2=4, L3=3, L4=7, Tổng=20 (RẤT NHIỀU), Ưu tiên=fire",
+    "[21:56:27] [PRIORITY] Chế độ ưu tiên: Đỏ=15s, Xanh=17s",
+    "[21:56:27] [PRIORITY] 🚨 Kích hoạt ưu tiên: FIRE trong 19 giây",
+    "[21:56:27] [INFO] Đèn chuyển sang RED trong 15 giây",
+    "[21:56:42] [INFO] Kết thúc RED chu kỳ 5",
+    "[21:56:42] [INFO] Đèn chuyển sang GREEN trong 17 giây"
+  ]
+}
